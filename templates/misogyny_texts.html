@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Find Misogynistic Texts App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/misogyny_calculator">Misogyny Classification</a></li>
+                <li><a class="active" href="/">Find Misogynistic Texts</a></li>
+            </ul>
+        </nav>
+        <h2>Find Misogynistic Texts</h2>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <input type="file" id="file_name" name="uploaded_csv_file" accept=".csv" required>
+            <input type="submit" name='btn' value="Upload">
+        </form>
+        <br>
+        <div style="margin-left: 20px; margin-right: 20px;">
+            {% if csv_data %}
+              {{ csv_data|safe }}
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Misogyny Classification App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    
+    <body>
+        <nav>
+            <ul>
+                <li><a class="active" href="/misogyny_calculator">Misogyny Classification</a></li>
+                <li><a href="/">Find Misogynistic Texts</a></li>
+            </ul>
+        </nav>
+        <h2>Misogyny Classification</h2>
+        <form name="form", method="POST">
+            <p>What text do you want to get the misogyny classification for? </p>
+            <textarea name="text_to_score" placeholder="Enter text to get misogyny class." rows="20" cols="80" required></textarea>
+            <br><br>
+            <input type="submit" name='btn' value="Run">
+        </form>
+        <br><br>
+        {% if missing_info %}
+        <p>{{ missing_info }}</p>
+        {% endif %}
+
+        {% if typed_text %}
+        <p>Text: {{ typed_text }}</p>
+        <p>Misogyny Class: {{ output }}</p>
+        {% endif %}
+    </body>
+</html>
